@@ -1,0 +1,5 @@
+<%= form_for @comment do |f| %>
+    <%= f.fields_for :users, @post.users.build do |users_fields| %>
+        <%= users_fields.text_field :username %>
+    <% end %>
+<% end %>
