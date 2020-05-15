@@ -18,3 +18,16 @@
    <li> <%= link_to u.username, user_path(u) %></li>
     <%end%>
 </ul>
+
+<%= form_for @post.comments do |f| %>
+<%= f.hidden_field :post_id, value: @post.id %>
+
+    <%= f.label "User Select"%>
+    <%= f.collection_select :user_id, User.all, :id, :username, {include_blank: 'none'}  %>
+
+    <%= f.fields_for  :users, @post.user.build do |user_fields|  %>
+        <%= user_fields.label "Username" %>
+        <%= user_fields.text_field :username%>
+    <%end%>
+    <%= f.submit %>   
+<% end %>
