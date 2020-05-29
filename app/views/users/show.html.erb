@@ -1,1 +1,4 @@
-
+<h1> Posts With Comments</h1>
+<% @user.posts.each do |t| %>
+    <li><%= link_to t.title, post_path(t) %></li>
+<% end %>
